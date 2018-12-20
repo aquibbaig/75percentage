@@ -117,6 +117,13 @@ app.post('/userverify', function(req, res){
 //   })
 // })
 
+//get getDetails
+app.get('/getDetails', function(req, res){
+  subjectModel.find({}, (err, done) => {
+    res.send(done)
+  })
+})
+
 app.use('/', index);
 
 
@@ -131,6 +138,32 @@ app.get('/subjects/:name', function(req, res) {
     else{
       console.log(result.subjects + "here")
       res.send(result.subjects)
+    }
+  })
+})
+
+//tabled finally
+app.get('/tabled/:hentaname', function(req, res){
+  subjectModel.findOneAndUpdate({subjectname:req.params.hentaname}, {$inc: {tabled:1}}, function(err,details){
+    if(err){
+      console.log(err)
+    }
+    else{
+      res.send(200)
+      console.log("updated tabled entry!")
+    }
+  })
+})
+
+//attend finally
+app.get('/attend/:hentaname', function(req, res){
+  subjectModel.findOneAndUpdate({subjectname:req.params.hentaname}, {$inc: {attended:1}}, function(err,details){
+    if(err){
+      console.log(err)
+    }
+    else{
+      res.send(200)
+      console.log("updated tabled entry!")
     }
   })
 })

@@ -52,7 +52,7 @@ class Login extends React.Component{
   }
 
   render(){
-    if(this.state.verified == false){
+    if(this.state.verified === false){
       return(
         <Form onSubmit={this.handleSubmit}>
           <Form.Field>
