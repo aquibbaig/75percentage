@@ -107,6 +107,9 @@ class Subjects extends React.Component{
             <Card.Description>
               Attended <strong>{subject.attended}</strong>
             </Card.Description>
+            <Card.Description>
+                Metric <strong>({subject.attended}/{subject.tabled})*100</strong>
+            </Card.Description>
           </Card.Content>
           <Card.Content extra>
             <div className='ui two buttons'>
