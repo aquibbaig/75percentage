@@ -40,6 +40,30 @@ class Subjects extends React.Component{
     })
   }
 
+  componentWillUpdate(){
+    fetch('http://localhost:8000/getDetails', {
+      method:'GET'
+    })
+    .then(response => {
+      if(response.status === 200){
+        return response.json()
+      }
+      else{
+        window.alert("Kuch v enter karega nahi?")
+      }
+    })
+    .then((data) => {
+      console.log(data)
+      this.setState({
+        subjectsList:data
+      })
+      console.log(this.state.subjectsList)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+
   forceUpdateHandler = () => {
     this.forceUpdate()
   }
