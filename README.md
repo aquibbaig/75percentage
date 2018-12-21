@@ -10,7 +10,7 @@
 
 ## Future Scope:
   Add the option to enter timetable and display it on the user dashboard to help the user experience process.
-  Enable more metrics like whatever classes are in a week for a subject and how to achieve your goal.
+  Enable more metrics like whatever classes  are to be attended in the following week for a subject and how to achieve your goal.
 
 
 ### Feel free to fork and experiment. This is for public use. Thank You!
