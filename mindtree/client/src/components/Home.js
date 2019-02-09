@@ -31,7 +31,7 @@ class Home extends React.Component{
 
   handleSubmit = (e) => {
     e.preventDefault()
-    console.log("State data is:" + JSON.stringify(this.state))
+    // console.log("State data is:" + JSON.stringify(this.state))
     fetch('http://localhost:8000/users', {
       method:'POST',
       body:JSON.stringify(this.state),

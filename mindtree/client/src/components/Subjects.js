@@ -13,7 +13,6 @@ class Subjects extends React.Component{
     }
     this.handletableClick = this.handletableClick.bind(this)
     this.handleattendClick = this.handleattendClick.bind(this)
-    this.forceUpdateHandler = this.forceUpdateHandler.bind(this)
   }
 
   componentDidMount(){
@@ -40,33 +39,33 @@ class Subjects extends React.Component{
     })
   }
 
-  componentWillUpdate(){
-    fetch('http://localhost:8000/getDetails', {
-      method:'GET'
-    })
-    .then(response => {
-      if(response.status === 200){
-        return response.json()
-      }
-      else{
-        window.alert("Kuch v enter karega nahi?")
-      }
-    })
-    .then((data) => {
-      console.log(data)
-      this.setState({
-        subjectsList:data
-      })
-      console.log(this.state.subjectsList)
-    })
-    .catch(err => {
-      console.log(err)
-    })
-  }
-
-  forceUpdateHandler = () => {
-    this.forceUpdate()
-  }
+  // componentDidUpdate(){
+  //   fetch('http://localhost:8000/getDetails', {
+  //     method:'GET'
+  //   })
+  //   .then(response => {
+  //     if(response.status === 200){
+  //       return response.json()
+  //     }
+  //     else{
+  //       window.alert("Kuch v enter karega nahi?")
+  //     }
+  //   })
+  //   .then((data) => {
+  //     console.log(data)
+  //     this.setState({
+  //       subjectsList:data
+  //     })
+  //     console.log(this.state.subjectsList)
+  //   })
+  //   .catch(err => {
+  //     console.log(err)
+  //   })
+  // }
+  //
+  // forceUpdateHandler = () => {
+  //   this.forceUpdate()
+  // }
 
   handletableClick = (e) => {
     var subject = e.target.value
@@ -75,6 +74,7 @@ class Subjects extends React.Component{
     })
     .then(res => {
       console.log(res)
+      window.location.reload()
     })
     .catch(err => {
       console.log(err)
@@ -88,6 +88,7 @@ class Subjects extends React.Component{
     })
     .then(res => {
       console.log(res)
+      window.location.reload();
     })
     .catch(err => {
       console.log(err)
@@ -108,7 +109,7 @@ class Subjects extends React.Component{
               Attended <strong>{subject.attended}</strong>
             </Card.Description>
             <Card.Description>
-                Metric <strong>({subject.attended}/{subject.tabled})*100</strong>
+                Metric <strong>{subject.attended/subject.tabled*100}%</strong>
             </Card.Description>
           </Card.Content>
           <Card.Content extra>
